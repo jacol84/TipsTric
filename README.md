@@ -4,8 +4,8 @@
 
 ***
 ### tail
- (win-PS)
-
+(win-PS)
+    
     Get-Content -Wait log.log -Tail 10 
 
 (linux)
@@ -30,4 +30,7 @@
     wsl --list --verbose
     //or
     wsl -l -v
+
+### uruchomienie konkretnej dystrybucji 
+    wsl -d docker-desktop
 
