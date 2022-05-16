@@ -21,3 +21,14 @@ wsl -l -v
 ``` PowerShell
 wsl -d docker-desktop
 ```
+
+### run wsl sudo apt-get update
+``` PowerShell
+wsl sudo apt-get update
+```
+
+
+### dir i użycie grep pod windows
+``` PowerShell
+dir | wsl grep java 
+```
