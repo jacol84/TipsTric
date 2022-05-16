@@ -32,3 +32,7 @@ wsl sudo apt-get update
 ``` PowerShell
 dir | wsl grep java 
 ```
+lub użycie powershell
+``` PowerShell
+wsl ls -la | findstr "git"
+```
