@@ -1,4 +1,4 @@
-# TipsTric
+# Tips & Tric
 
 ## PowerShell i CMD i BASH
 
@@ -23,6 +23,8 @@ sudo apt-get update && sudo apt-get upgrade -y
 
 ***
 ### [MD]
+***
+### [VIM]
 
 
 
@@ -32,3 +34,4 @@ sudo apt-get update && sudo apt-get upgrade -y
 
 [WSL]: /wsl/wsl.md
 [MD]: /md/md.md
+[VIM]: /vim/vim.md
