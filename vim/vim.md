@@ -41,7 +41,7 @@ $ koniec linii
 
 ```
 
-kasowanie tekstu("")
+kasowanie(wycinanie) tekstu("")
 ```
 dh/dl - kasowanie litery lewo/prawo
 dj/dk - kasowanie linni dół/góra
@@ -56,5 +56,8 @@ d$ - kasowanie do końca linii od kursora
 
 kopiowanie tekstu("")
 ```
-
+dd - wycinanie linii (schowek)
+yy - kopiowanie lini
+p - wklejenie poniżej linii
+"shift + p" - wklejenie powyżej  linii
 ```
