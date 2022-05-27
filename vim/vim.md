@@ -1,7 +1,7 @@
 
 
 
-Zapisz swój plik przy pomocy komendy 
+### Zapisz swój plik przy pomocy komendy 
 ```
 :w<ENTER>
 ```
@@ -12,8 +12,8 @@ Opuść edytor przy pomocy komendy
 ```
 
 
-
-poruszanie ("") 
+***
+### poruszanie ("") 
 ```
 strzałki
 
@@ -40,8 +40,8 @@ $ koniec linii
 "gg" - poczatek linii
 
 ```
-
-kasowanie(wycinanie) tekstu("")
+***
+### kasowanie(wycinanie) tekstu("")
 ```
 dh/dl - kasowanie litery lewo/prawo
 dj/dk - kasowanie linni dół/góra
@@ -53,8 +53,8 @@ d$ - kasowanie do końca linii od kursora
 "shift + d" kasowanie do konca linii
 
 ```
-
-kopiowanie tekstu("")
+***
+### kopiowanie tekstu("")
 ```
 dd - wycinanie linii (schowek)
 yy - kopiowanie lini
@@ -63,8 +63,8 @@ p - wklejenie poniżej linii
 
 ```
 
-
-dodawnie/łączenie tekstu tekstu("")
+***
+### dodawnie/łączenie tekstu tekstu("")
 ```
 "3 + shift + o --> ala"  -> resultat 3 linie z ala
 "40 + i --> #"  -> resultat 40 znków #
@@ -74,8 +74,8 @@ c$ - podmiana od kursora do konca linii
 g + u + u -(u-małe) małe litery w całej linii
 g + U + U -(U-dduże) duże litery w całej linii
 ```
-
-wyszukiwanie ("")
+***
+### wyszukiwanie ("")
 ```
 f{znak} -> wyszukiwanie po znaku w linii w przud od kursora
 F{znak} -> wyszukiwanie po znaku w linii w tył od kursora
@@ -92,8 +92,8 @@ T{znak} -> wyszukiwanie po znaku w linii w tył od kursora ->  kursor za znakiem
 */# -> szuka tego słowa na którym znajduje się kursor następne/poprzednie wystąpenie
 
 ```
-
-podmiana ("")
+***
+### podmiana ("")
 ```
 
 ```
