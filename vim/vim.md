@@ -71,6 +71,24 @@ dodawnie/łączenie tekstu tekstu("")
 "shitf + a" - tryb wprowadzania na kon:iec tekstu
 cw - podmiana słowa
 c$ - podmiana od kursora do konca linii
-g + u + u - małe litery w całej linii
-g + shift + u + u - duże litery w całej linii
+g + u + u -(u-małe) małe litery w całej linii
+g + U + U -(U-dduże) duże litery w całej linii
+```
+
+wyszukiwanie ("")
+```
+f{znak} -> wyszukiwanie po znaku w linii w przud od kursora
+F{znak} -> wyszukiwanie po znaku w linii w tył od kursora
+
+t{znak} -> wyszukiwanie po znaku w linii w przud od kursora kursor przed znakiem
+T{znak} -> wyszukiwanie po znaku w linii w tył od kursora ->  kursor za znakiem
+
+
+/{tekst} -> szuka w całym teksie wystąpenia tego tekstu w przód
+?{tekst} -> szuka w całym teksie wystąpenia tego tekstu w tył
+
+/{tekst}<enter> n/N -> następne/poprzednie wystąpenie
+
+*/# -> szuka tego słowa na którym znajduje się kursor następne/poprzednie wystąpenie
+
 ```
