@@ -92,3 +92,8 @@ T{znak} -> wyszukiwanie po znaku w linii w tył od kursora ->  kursor za znakiem
 */# -> szuka tego słowa na którym znajduje się kursor następne/poprzednie wystąpenie
 
 ```
+
+podmiana ("")
+```
+
+```
