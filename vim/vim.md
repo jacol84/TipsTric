@@ -3,7 +3,7 @@
 
 Zapisz swój plik przy pomocy komendy 
 ```
-:w<>
+:w<ENTER>
 ```
 
 Opuść edytor przy pomocy komendy 
@@ -60,4 +60,17 @@ dd - wycinanie linii (schowek)
 yy - kopiowanie lini
 p - wklejenie poniżej linii
 "shift + p" - wklejenie powyżej  linii
+
+```
+
+
+dodawnie/łączenie tekstu tekstu("")
+```
+"3 + shift + o --> ala"  -> resultat 3 linie z ala
+"40 + i --> #"  -> resultat 40 znków #
+"shitf + a" - tryb wprowadzania na kon:iec tekstu
+cw - podmiana słowa
+c$ - podmiana od kursora do konca linii
+g + u + u - małe litery w całej linii
+g + shift + u + u - duże litery w całej linii
 ```
