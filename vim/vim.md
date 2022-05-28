@@ -37,7 +37,7 @@ $ koniec linii
 ":12" skok do 12 linii
 
 "shift + g" - koniec pliku
-"gg" - poczatek linii
+"gg" - poczatek pliku
 
 ```
 ***
