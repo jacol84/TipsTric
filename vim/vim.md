@@ -61,6 +61,8 @@ yy - kopiowanie lini
 p - wklejenie poniżej linii
 "shift + p" - wklejenie powyżej  linii
 
+4yy - kopiowanie 4 linii 
+
 ```
 
 ***
@@ -93,7 +95,8 @@ T{znak} -> wyszukiwanie po znaku w linii w tył od kursora ->  kursor za znakiem
 
 ```
 ***
-### podmiana ("")
+### zastąpenie ("")
 ```
+:[zakres]s/{aktualny}/{nowy}/[flag]
 
 ```
