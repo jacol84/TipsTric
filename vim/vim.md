@@ -25,14 +25,11 @@ k - góra
 0 początek linii
 $ koniec linii
 
-"w" skakanie do przodu po słowach
-"b" skakanie do tyłu po słowach
+"w"/"b" skakanie do przodu/tyłu po słowach
 
-"shift + w" skakanie do przodu po całym ciągu omija np ala-ala
-"shift + b" skakanie do tyłu po całym ciągu 
+"shift + w/b" skakanie do przodu/tyłu po całym ciagu do spacji
 
-"ctrl + f" następna strona
-"ctrl + b" poprzednia strona
+"ctrl + f/b" następna/poprzednia strona
 
 ":12" skok do 12 linii
 
