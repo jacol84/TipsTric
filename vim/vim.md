@@ -97,3 +97,10 @@ T{znak} -> wyszukiwanie po znaku w linii w tył od kursora ->  kursor za znakiem
 :[zakres]s/{aktualny}/{nowy}/[flag]
 
 ```
+***
+### cofanie zmiany ("")
+```
+u -> cofnięcie ostatniej zmiany.
+U -> cofnięcie wszystkich zmian w bieżącej linii.
+
+```
