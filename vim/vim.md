@@ -31,7 +31,7 @@ $ koniec linii
 
 "ctrl + f/b" następna/poprzednia strona
 
-":12" skok do 12 linii
+":12"/12G -> skok do 12 linii
 
 % – przejście do otwarcia / zamknięcia nawiasu (),[],<>,{}
 
