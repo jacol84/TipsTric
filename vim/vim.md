@@ -88,7 +88,8 @@ T{znak} -> wyszukiwanie po znaku w linii w tył od kursora ->  kursor za znakiem
 /{tekst} -> szuka w całym teksie wystąpenia tego tekstu w przód
 ?{tekst} -> szuka w całym teksie wystąpenia tego tekstu w tył
 
-/{tekst}<enter> n/N -> następne/poprzednie wystąpenie
+/{tekst}<enter> n/N -> przejście do następne/poprzednie wystąpenie
+
 
 */# -> szuka tego słowa na którym znajduje się kursor następne/poprzednie wystąpenie
 
@@ -97,9 +98,14 @@ T{znak} -> wyszukiwanie po znaku w linii w tył od kursora ->  kursor za znakiem
 ### zastąpenie ("")
 ```
 :[zakres]s/{aktualny}/{nowy}/[flag]
+przykłady 
+STARY – ciąg znaków stary (który ma zostać znaleziony), NOWY – na ten na który zamieniamy.
 
-n –> przejście do następnego znalezionego elementu
-SHIFT+n - > przejście do poprzedniego znalezionego elementu
+:s/STARY/NOWY – pierwszego wystąpienia w bieżącej linii
+:s/STARY/NOWY/g – każdego wystąpienia w linii
+:#,#s/STARY/NOWY/g – pomiędzy liniami # i #
+:%s/STARY/NOWY/g – w całym dokumencie
+
 ```
 ***
 ### cofanie zmiany ("")
