@@ -33,6 +33,8 @@ $ koniec linii
 
 ":12" skok do 12 linii
 
+% – przejście do otwarcia / zamknięcia nawiasu (),[],<>,{}
+
 "shift + g" - koniec pliku
 "gg" - poczatek pliku
 
@@ -47,7 +49,7 @@ dd - kasowanie linii
 2dw/d2w - kasowanie dwóch słów 
 d0 - kasowanie do poczatku linni od kurosra
 d$ - kasowanie do końca linii od kursora
-"shift + d" kasowanie do konca linii
+"shift + d" - kasowanie do konca linii
 
 ```
 ***
@@ -96,6 +98,8 @@ T{znak} -> wyszukiwanie po znaku w linii w tył od kursora ->  kursor za znakiem
 ```
 :[zakres]s/{aktualny}/{nowy}/[flag]
 
+n –> przejście do następnego znalezionego elementu
+SHIFT+n - > przejście do poprzedniego znalezionego elementu
 ```
 ***
 ### cofanie zmiany ("")
