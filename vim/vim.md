@@ -115,6 +115,8 @@ STARY – ciąg znaków stary (który ma zostać znaleziony), NOWY – na ten na
 ```
 u -> cofnięcie ostatniej zmiany.
 U -> cofnięcie wszystkich zmian w bieżącej linii.
+ctrl + r -> wycofanie cofnięcia
+ctrl + shift + r ->wycofanie cofnięcia wszystkich zmian w bieżącej linii.
 
 ```
 ***
