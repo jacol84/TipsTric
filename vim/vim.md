@@ -114,3 +114,10 @@ u -> cofnięcie ostatniej zmiany.
 U -> cofnięcie wszystkich zmian w bieżącej linii.
 
 ```
+***
+### edycja ("")
+```
+< -> po zaznaczeniu pełnych linii zmniejsza wcięcie bloku zgodnie z ustawieniami Vima	visual
+> -> po zaznaczeniu pełnych linii zwiększa wcięcie bloku zgodnie z ustawieniami Vima	visual
+
+```
