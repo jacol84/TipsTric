@@ -74,6 +74,9 @@ cw - podmiana słowa
 c$ - podmiana od kursora do konca linii
 g + u + u -(u-małe) małe litery w całej linii
 g + U + U -(U-dduże) duże litery w całej linii
+gu{ruch} -> zmiana liter na małe od kursora w kierunku klawisza ruchu; 
+gU{strzałka}->zmiana liter na duże od kursora w kierunku klawisza ruchu
+g~{strzałka} -> zmiana wielkości liter (małe na duże, duże na małe) w kierunku klawisza ruchu
 ```
 ***
 ### wyszukiwanie ("")
