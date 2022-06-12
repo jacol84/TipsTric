@@ -10,6 +10,10 @@ Opuść edytor przy pomocy komendy
 ```
 :q<ENTER>
 ```
+zapis i wyjście 
+```
+:qw<ENTER> lub ZZ
+```
 
 
 ***
