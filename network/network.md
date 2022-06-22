@@ -1,4 +1,13 @@
-PS
+
+
+połączenie się do zasobu innego komputera
+``` PowerShell 
+net use \\{HOSTNAME}\d$ /USER:{HOSTNAME}\{LOGIN} {PASSWORD}
+``` 
+połączenie się do zasobu innego komputera
+``` PowerShell 
+Enter-PSSession -ComputerName {HOSTNAME} -Credential '{LOGIN}\{PASSWORD}' 
+``` 
 
 
 ### sprawdzanie jaki proces nasłuchuje na jakim porcie [GET-NEtTCPConnection](https://docs.microsoft.com/en-us/powershell/module/nettcpip/get-nettcpconnection?view=winserver2012r2-ps&redirectedfrom=MSDN)
