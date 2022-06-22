@@ -1,7 +1,7 @@
 PS
 
 
-### sprawdzanie jaki proces nasłuchuje na jakim porcie
+### sprawdzanie jaki proces nasłuchuje na jakim porcie [GET-NEtTCPConnection](https://docs.microsoft.com/en-us/powershell/module/nettcpip/get-nettcpconnection?view=winserver2012r2-ps&redirectedfrom=MSDN)
 
 ``` PowerShell 
 Get-NetTCPConnection -LocalPort 9002
@@ -27,7 +27,8 @@ $wsl_ip = (wsl hostname -I).trim()
 Write-Host "WSL Machine IP: ""$wsl_ip"""
 ```
 
-### tworzenie proxy
+### tworzenie proxy [NETSH](https://docs.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-contexts)
+
 #### wyświetlenie procy proxy 
 ``` PowerShell 
 netsh interface portproxy show all 
