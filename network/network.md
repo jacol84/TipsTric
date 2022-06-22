@@ -32,3 +32,20 @@ Write-Host "WSL Machine IP: ""$wsl_ip"""
 ``` PowerShell 
 netsh interface portproxy show all 
 ```
+#### tworzenie reguły
+
+``` PowerShell 
+netsh interface portproxy add v4tov4 listenport=9002 listenaddress=0.0.0.0 connectport=9002 connectaddress=192.168.8.9
+```
+example przekierowanie adresu z wsl do localhost 9002
+
+``` PowerShell 
+$wsl_ip = (wsl hostname -I).trim()
+Write-Host "WSL Machine IP: ""$wsl_ip"""
+netsh interface portproxy add v4tov4 listenport=9002 listenaddress=0.0.0.0 connectport=9002 connectaddress=$wsl_ip
+```
+
+#### skasowanie reguł 
+``` PowerShell 
+netsh interface portproxy reset
+```
