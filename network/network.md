@@ -21,3 +21,9 @@ sprawdzenie jak jest
 Test-NetConnection -ComputerName 127.0.0.1 -Port 9002
 ```
 
+pobranie adresu wsl
+``` PowerShell 
+$wsl_ip = (wsl hostname -I).trim()
+Write-Host "WSL Machine IP: ""$wsl_ip"""
+```
+
