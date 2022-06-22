@@ -43,6 +43,16 @@ $ koniec linii
 "gg" - poczatek pliku
 
 ```
+
+***
+### cofnij/na przód ("")
+```
+"u/U(shitf+u)" -> cofnij
+:undo -> cofnij
+"ctrl + r" -> na przód 
+"4 + ctrl + r" -> na przód 
+```
+
 ***
 ### kasowanie(wycinanie) tekstu("")
 ```
@@ -101,6 +111,7 @@ T{znak} -> wyszukiwanie po znaku w linii w tył od kursora ->  kursor za znakiem
 */# -> szuka tego słowa na którym znajduje się kursor następne/poprzednie wystąpenie
 
 ```
+
 ***
 ### zastąpenie ("")
 ```
