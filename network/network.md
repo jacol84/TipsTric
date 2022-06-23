@@ -39,7 +39,7 @@ Write-Host "WSL Machine IP: ""$wsl_ip"""
 ### tworzenie proxy [NETSH](https://docs.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-contexts)
 
 #### wyświetlenie procy proxy 
-``` PowerShell 
+``` cmd 
 netsh interface portproxy show all 
 ```
 #### tworzenie reguły
