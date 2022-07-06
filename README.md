@@ -3,10 +3,10 @@
 ## PowerShell i CMD i BASH
 
  ***
-### clean history
-(win-PS)
+### clean history 
+(win-PS) sksowanie 3, i 6 pozycji z get-history
 ``` PowerShell
-??
+Clear-History -Id 3, 5
 ```
 
 (linux) sksowanie 6 pozycji z history
