@@ -3,6 +3,18 @@
 ## PowerShell i CMD i BASH
 
  ***
+### clean history
+(win-PS)
+``` PowerShell
+??
+```
+
+(linux) sksowanie 6 pozycji z history
+``` BASH
+history -d 6
+``` 
+
+ ***
 ### tail
 (win-PS)
 ``` PowerShell
