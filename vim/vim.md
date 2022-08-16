@@ -117,12 +117,12 @@ T{znak} -> wyszukiwanie po znaku w linii w tył od kursora ->  kursor za znakiem
 ```
 :[zakres]s/{aktualny}/{nowy}/[flag]
 przykłady 
-STARY – ciąg znaków stary (który ma zostać znaleziony), NOWY – na ten na który zamieniamy.
+STARY -> ciąg znaków stary (który ma zostać znaleziony), NOWY – na ten na który zamieniamy.
 
-:s/STARY/NOWY – pierwszego wystąpienia w bieżącej linii
-:s/STARY/NOWY/g – każdego wystąpienia w linii
-:#,#s/STARY/NOWY/g – pomiędzy liniami # i #
-:%s/STARY/NOWY/g – w całym dokumencie
+:s/STARY/NOWY -> pierwszego wystąpienia w bieżącej linii
+:s/STARY/NOWY/g -> każdego wystąpienia w linii
+:#,#s/STARY/NOWY/g -> pomiędzy liniami # i #
+:%s/STARY/NOWY/g -> w całym dokumencie
 
 ```
 ***
@@ -139,5 +139,17 @@ ctrl + shift + r ->wycofanie cofnięcia wszystkich zmian w bieżącej linii.
 ```
 < -> po zaznaczeniu pełnych linii zmniejsza wcięcie bloku zgodnie z ustawieniami Vima	visual
 > -> po zaznaczeniu pełnych linii zwiększa wcięcie bloku zgodnie z ustawieniami Vima	visual
+
+```
+***
+### makra ("")
+```
+:reg -> podejrzenie rejestr
+q{rejestr} MAKRO q -> nagranie makra
+@{rejestru} -> uruchomienie makra
+@@ -> ostatnie makro
+
+przykład:
+qd 2d  q -> użycie @d -> makro kasujace 2 linie kodu  w rejestrze d
 
 ```
