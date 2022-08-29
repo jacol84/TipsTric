@@ -10,6 +10,10 @@ reg export HKCU\Software\SimonTatham ([Environment]::GetFolderPath("Desktop") + 
 Get-Process java |where CommandLine -Like '*8787*' | where CommandLine -Like '*wild*'| %{Write-Host $_.CommandLine +$_.Id + $_.Name ; $_} | Stop-Process -Confirm
 ```
 
+### 5 request to localhost 
+``` PowerShell
+1..5| iwr -Uri "http://localhost:9000/omsstatus"  | select Content | %{ConvertFrom-Json $_.Content}
+```
 
 
 
