@@ -16,18 +16,7 @@ Get-Process java |where CommandLine -Like '*8787*' | where CommandLine -Like '*w
 ```
 
 
-
-### wsl ---- ????
+### WSL - wsl_ip to ngnix and start
 ``` PowerShell
-
-$wsl_ip = (wsl hostname -I).trim()  `
-Write-Host "WSL Machine IP: ""$wsl_ip""" `
-Set-Clipboard -Value $wsl_ip `
-
-
-$content = Get-Content D:\praca\nginx\nginx-1.22.0-local\conf\include\oms.conf  `
-$content[4] = "        set `$www http://$wsl_ip;   # wsl"  `
-
-Set-Content -Path D:\praca\nginx\nginx-1.22.0-local\conf\include\oms.conf 
-
+%{$wsl_ip = (wsl hostname -I).trim()}  && Write-Host "WSL Machine IP: ""$wsl_ip"""  && %{$content = Get-Content D:\praca\nginx\nginx-1.22.0-local\conf\include\oms.conf} && %{$content[4] = "        set `$www http://$wsl_ip;   # wsl"} && %{Set-Content -Path D:\praca\nginx\nginx-1.22.0-local\conf\include\oms.conf -Value $content} && %{cd D:\praca\nginx\nginx-1.22.0-local && Get-Date && Get-Item .\conf\include\oms.conf  && .\nginx}
 ```
