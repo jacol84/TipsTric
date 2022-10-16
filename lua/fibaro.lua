@@ -59,22 +59,29 @@ local livingroom = {
 
 function openSwitch(room)
 
-    local items = selectItemByDay(room.items)
-    local tempInRomm = selectIsDay(items)
+    local itemsD = selectItemsByDay(room.items)
+    local itemsH = selectItemsByTime(itemsD)
+    local item = itemsH[0]
+    local tempInRomm = nil
+    if(table.getn(itemsH) > 0) then
+        tempInRomm = { isDay=true, temp=temp.t1 , name = "tryb dzin" }
+    else
+        tempInRomm = { isDay=false, temp=temp.t2, name = "tryb noc" }
+    end
 
     if tempInRomm.temp >= room.temp then
-        fibaro.debug(scena, "temperatura w " .. room.name .. " jest " .. room.temp .. " obecnie jest " .. XXitemByDay.name .. " jest " ..tempInRomm.name .. " zal" )
+        fibaro.debug(scena, "temperatura w " .. room.name .. " jest " .. room.temp .. " obecnie jest " .. item.name .. " jest " ..tempInRomm.name .. " zal" )
         return true
     end
-    fibaro.debug(scena, "temperatura w " .. room.name .. " jest " .. room.temp .. " obecnie jest " .. XXitemByDay.name .. " jest " ..tempInRomm.name .. " wyl" )
+    fibaro.debug(scena, "temperatura w " .. room.name .. " jest " .. room.temp .. " obecnie jest " .. item.name .. " jest " ..tempInRomm.name .. " wyl" )
     return false
 end
 
-function selectItemByDay(items)
+function selectItemsByDay(items)
     local result = {}
     for k,item in pairs(items) do 
         for k,rangDay in pairs(item.rangD) do 
-            -- fibaro.debug(scena, "selectItemByDay " .. dayOfWeek .. " TO " .. rangDay.start )
+            -- fibaro.debug(scena, "selectItemsByDay " .. dayOfWeek .. " TO " .. rangDay.start )
             if rangDay.start <= dayOfWeek and rangDay.endd >= dayOfWeek then
                 table.insert( result, item)
             end
@@ -84,17 +91,17 @@ function selectItemByDay(items)
 end
 
 
-function selectIsDay(items)
+function selectItemsByTime(items)
     local result = {}
     for k,item in pairs(items) do 
         for k, rang in pairs(item.rangH) do 
-            -- fibaro.debug(scena, "selectIsDay " .. hourOfTime .. " TO " .. rang.start .. " TO " .. rang.endd )
+            -- fibaro.debug(scena, "selectItemsByTime " .. hourOfTime .. " TO " .. rang.start .. " TO " .. rang.endd )
             if rang.start <= hourOfTime and rang.endd > hourOfTime then
-                return { isDay=true, temp=temp.t1 , name = "tryb dzin" }
+                table.insert( result, item)
             end
         end
     end
-    return { isDay=false, temp=temp.t2, name = "tryb noc" }
+    return result
 end
 
 switchGrant = openSwitch(grantM)
