@@ -43,12 +43,12 @@ local livingroom = {
 }
 
 function less(rang, value) 
-    fibaro.debug(scena, "less " .. rang.start .. "<=" .. value .. "<" ..rang.endd )
+    -- fibaro.debug(scena, "less " .. rang.start .. "<=" .. value .. "<" ..rang.endd )
     return  rang.start <= value and rang.endd > value
 end
 
 function eqOrless(rang, value) 
-    fibaro.debug(scena, "eqOrless " .. rang.start .. "<=" .. value .. "<=" ..rang.endd )
+    -- fibaro.debug(scena, "eqOrless " .. rang.start .. "<=" .. value .. "<=" ..rang.endd )
     return  rang.start <= value and rang.endd >= value
 end
 
@@ -59,21 +59,21 @@ function openSwitch(room)
     local tempInRomm = getTempProces(itemsH)
 
     if tempInRomm.temp >= room.temp then
-        fibaro.debug(scena, "temperatura w " .. room.name .. " jest " .. room.temp .. " obecnie jest " .. item.name .. " jest " .. tempInRomm.name .. " zal" )
+         fibaro.debug(scena, "temperatura w " .. room.name .. " jest " .. room.temp .. " obecnie jest " .. item.name .. " jest " .. tempInRomm.name .. " zal" )
         return true
     end
-    fibaro.debug(scena, "temperatura w " .. room.name .. " jest " .. room.temp .. " obecnie jest " .. item.name .. " jest " .. tempInRomm.name .. " wyl" )
+        fibaro.debug(scena, "temperatura w " .. room.name .. " jest " .. room.temp .. " obecnie jest " .. item.name .. " jest " .. tempInRomm.name .. " wyl" )
     return false
 end
 
 function selectItems(items, name, value, operator )
-    local result = {}, i = 0
+    local result = {}; i = 0
     for k,item in pairs(items) do         
         for k,rangDay in pairs(item[name]) do 
             local isActive = operator(rangDay , value)
-            fibaro.debug(scena, "selectItems " .. tostring(isActive) .. " " ..  item.name .. " " .. value .. " TO " .. rangDay.start )
+            -- fibaro.debug(scena, "selectItems " .. tostring(isActive) .. " " ..  item.name .. " " .. value .. " TO " .. rangDay.start )
             if isActive then
-                fibaro.debug(scena, "selectItems " .. "dodane " .. item.name )
+                -- fibaro.debug(scena, "selectItems " .. "dodane " .. item.name )
                 result[i] = item
                 i = i + 1
             end
@@ -90,12 +90,12 @@ function getTempProces(items)
     end
 end
 
-isLivingroom = openSwitch(livingroom)
+local isLivingroom = openSwitch(livingroom)
 
-if isLivingroom or openSwitch(grantM) or  then
-    fibaro.debug(scena,"turnOn")
+if isLivingroom or openSwitch(grantM)  then
+    -- fibaro.debug(scena,"turnOn")
     -- fibaro.call(device.controlDeviceId, "turnOff")
 else
-    fibaro.debug(scena,"turnOff")
+    -- fibaro.debug(scena,"turnOff")
     -- fibaro.call(device.controlDeviceId, "turnOn")
 end
