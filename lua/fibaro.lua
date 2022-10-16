@@ -93,9 +93,9 @@ end
 local isLivingroom = openSwitch(livingroom)
 
 if isLivingroom or openSwitch(grantM)  then
-    -- fibaro.debug(scena,"turnOn")
+    fibaro.debug(scena,"turnOn")
     -- fibaro.call(device.controlDeviceId, "turnOff")
 else
-    -- fibaro.debug(scena,"turnOff")
+    fibaro.debug(scena,"turnOff")
     -- fibaro.call(device.controlDeviceId, "turnOn")
 end
