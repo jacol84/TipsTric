@@ -67,8 +67,7 @@ function openSwitch(room)
 end
 
 function selectItems(items, name, value, operator )
-    local result = {},
-    local i = 0
+    local result = {}, i = 0
     for k,item in pairs(items) do         
         for k,rangDay in pairs(item[name]) do 
             local isActive = operator(rangDay , value)
@@ -91,8 +90,9 @@ function getTempProces(items)
     end
 end
 
-openSwitch(grantM) 
-if openSwitch(grantM) or openSwitch(livingroom) then
+isLivingroom = openSwitch(livingroom)
+
+if isLivingroom or openSwitch(grantM) or  then
     fibaro.debug(scena,"turnOn")
     -- fibaro.call(device.controlDeviceId, "turnOff")
 else
