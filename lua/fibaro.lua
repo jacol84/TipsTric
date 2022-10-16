@@ -7,7 +7,7 @@ if(dayOfWeek == 0) then
    dayOfWeek = 7
 end
 
-local temp = {    t1 = 20,    t2 = 18    } --histereza
+local temp = {    t1 = 20,    t2 = 18    } --histerezę trzeba dodać 
 
 local grantM = { 
     name = "Pokoj Babci",
@@ -58,6 +58,7 @@ function openSwitch(room)
     local item = itemsH[0]
     local tempInRomm = getTempProces(itemsH)
 
+-- tu trzeba przemyśleć nad działaniem histerezy
     if tempInRomm.temp >= room.temp then
          fibaro.debug(scena, "temperatura w " .. room.name .. " jest " .. room.temp .. " obecnie jest " .. item.name .. " jest " .. tempInRomm.name .. " zal" )
         return true
@@ -98,4 +99,8 @@ if isLivingroom or openSwitch(grantM)  then
 else
     fibaro.debug(scena,"turnOff")
     -- fibaro.call(device.controlDeviceId, "turnOn")
+end
+
+if(isLivingroom) then
+  fibaro.debug(scena,"isLivingroom extra action")
 end
