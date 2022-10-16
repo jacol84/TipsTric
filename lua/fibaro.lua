@@ -39,11 +39,11 @@ local livingroom = {
 }
 
 function less(rang, value) 
-    return  rangDay.start <= value and rangDay.endd > value
+    return  rang.start <= value and rang.endd > value
 end
 
 function eqOrless(rang, value) 
-    return  rangDay.start <= value and rangDay.endd >= value
+    return  rang.start <= value and rang.endd >= value
 end
 
 function openSwitch(room)
