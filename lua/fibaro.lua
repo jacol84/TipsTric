@@ -1,3 +1,14 @@
+
+fibaro = {
+    getValue = function(a,b)
+        return 21
+    end,
+    debug = function (a,b)
+        print(a..b)
+    end
+}
+
+
 local hourOfTime = tonumber(os.date("%H"))
 local dayOfWeek = tonumber(os.date("%w"))
 local idDevice_1 = 114 --tu trzeba podac id pomiaru 1
@@ -7,7 +18,8 @@ local scena = "Scene195"
 
 local T1_1 = tonumber(fibaro.getValue(idDevice_1, "value"))
 local T2_1 = tonumber(fibaro.getValue(idDevice_2, "value"))
-
+local rangH = {        { start = 6, endd = 8 },        { start = 13, endd = 21 }    }
+rangH.add
 
 local temp = {    t1 = 20,    t2 = 18    }
 
@@ -47,36 +59,39 @@ local livingroom = {
 
 function openSwitch(room)
 
-    local itemByDay = selectItemByDay(room.items)
-    local tempInRomm = selectIsDay(itemByDay.rangH)
+    local items = selectItemByDay(room.items)
+    local tempInRomm = selectIsDay(items)
 
     if tempInRomm.temp >= room.temp then
-        fibaro.debug(scena, "temperatura w " .. room.name .. " jest " .. room.temp .. " obecnie jest " .. itemByDay.name .. " jest " ..tempInRomm.name .. " zal" )
+        fibaro.debug(scena, "temperatura w " .. room.name .. " jest " .. room.temp .. " obecnie jest " .. XXitemByDay.name .. " jest " ..tempInRomm.name .. " zal" )
         return true
     end
-    fibaro.debug(scena, "temperatura w " .. room.name .. " jest " .. room.temp .. " obecnie jest " .. itemByDay.name .. " jest " ..tempInRomm.name .. " wyl" )
+    fibaro.debug(scena, "temperatura w " .. room.name .. " jest " .. room.temp .. " obecnie jest " .. XXitemByDay.name .. " jest " ..tempInRomm.name .. " wyl" )
     return false
 end
 
 function selectItemByDay(items)
+    local result = {}
     for k,item in pairs(items) do 
         for k,rangDay in pairs(item.rangD) do 
             -- fibaro.debug(scena, "selectItemByDay " .. dayOfWeek .. " TO " .. rangDay.start )
-
             if rangDay.start <= dayOfWeek and rangDay.endd >= dayOfWeek then
-                return item
+                table.insert( result, item)
             end
         end
     end
-    return { name="brak" }
+    return result
 end
 
 
-function selectIsDay(ranges)
-    for k, rang in pairs(ranges) do 
-        -- fibaro.debug(scena, "selectIsDay " .. hourOfTime .. " TO " .. rang.start .. " TO " .. rang.endd )
-        if rang.start <= hourOfTime and rang.endd > hourOfTime then
-            return { isDay=true, temp=temp.t1 , name = "tryb dzin" }
+function selectIsDay(items)
+    local result = {}
+    for k,item in pairs(items) do 
+        for k, rang in pairs(item.rangH) do 
+            -- fibaro.debug(scena, "selectIsDay " .. hourOfTime .. " TO " .. rang.start .. " TO " .. rang.endd )
+            if rang.start <= hourOfTime and rang.endd > hourOfTime then
+                return { isDay=true, temp=temp.t1 , name = "tryb dzin" }
+            end
         end
     end
     return { isDay=false, temp=temp.t2, name = "tryb noc" }
