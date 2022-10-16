@@ -38,12 +38,12 @@ local livingroom = {
         }
 }
 
-function less(a, b) 
-    return a > b
+function less(rang, value) 
+    return  rangDay.start <= value and rangDay.endd > value
 end
 
-function eqOrless(a, b) 
-    return a >= b
+function eqOrless(rang, value) 
+    return  rangDay.start <= value and rangDay.endd >= value
 end
 
 function openSwitch(room)
@@ -65,7 +65,7 @@ function selectItems(items, name, value, operator )
     for k,item in pairs(items) do         
         for k,rangDay in pairs(item[name]) do 
             -- fibaro.debug(scena, "selectItemsByDay " .. dayOfWeek .. " TO " .. rangDay.start )
-            if rangDay.start <= value and operator(rangDay.endd , value) then
+            if operator(rangDay , value) then
                 table.insert( result, item)
             end
         end
