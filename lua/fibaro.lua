@@ -78,9 +78,8 @@ function openSwitch(room, roomVal)
 
     return {
         result = result,
-        message = "temperatura w " .. room.name .. " jest " .. roomVal.temp .. " => jest " .. tempVal.name .. " => rezultar " .. 
+        message = "temperatura w " .. room.name .. " jest " .. roomVal.temp .. " => jest " .. tempVal.name .. " => rezultar " .. result
     }
-
 end
 
 function generateResult(tempVal, roomVal){
