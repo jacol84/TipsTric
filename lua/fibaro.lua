@@ -85,7 +85,7 @@ end
 function generateResult(tempVal, roomVal)
     if tempVal.temp >= (roomVal.temp - hist) then
         return Result.ON
-    else if tempVal.temp >= (roomVal.temp + hist)  then
+    elseif tempVal.temp >= (roomVal.temp + hist)  then
         return Result.KEEP
     else
         return Result.OFF
@@ -125,7 +125,7 @@ fibaro.debug(scena,"\n ".. resultLR.message .. "\n" .. resultGM.message)
 if resultLR.result == Result.ON or resultGM.result == Result.ON  then
     fibaro.debug(scena,"turnOn")
     -- fibaro.call(device.controlDeviceId, "turnOff")
-else if (resultLR.result == Result.OFF and resultGM.result == Result.OFF) then
+elseif (resultLR.result == Result.OFF and resultGM.result == Result.OFF) then
     fibaro.debug(scena,"turnOff")
     -- fibaro.call(device.controlDeviceId, "turnOn")
 else
@@ -134,6 +134,6 @@ end
 
 if(resultLR.result == Result.ON) then
   fibaro.debug(scena, "isLivingroom extra action on ON")
-else if (resultLR.result == Result.OFF) then
+elseif (resultLR.result == Result.OFF) then
     fibaro.debug(scena, "isLivingroom extra action on OFF")
 end
