@@ -1,7 +1,5 @@
-local hourOfTime = tonumber(os.date("%H")) 
-local dayOfWeek = tonumber(os.date("%w"))
-local device = {id1 = 114, id2 = 39, controlDeviceId = 150} -- tu trzeba podać id pomiaru 1 i 2
-local scena = "Scene196"
+local hourOfTime = tonumber(os.date("%H")); dayOfWeek = tonumber(os.date("%w"))
+local device = {id1 = 114, id2 = 39, controlDeviceId = 150}; scena = "Scene196"
 local Result = {ON = "turnOn", OFF = "turnOff", KEEP = "keep"}
 
 
@@ -76,13 +74,15 @@ function openSwitch(room, roomVal)
 
     local result = generateResult(tempVal, roomVal)
 
+    fibaro.debug(scena, "temperatura w " .. room.name .. " jest " .. roomVal.temp .. " => jest " .. tempVal.name .. " => rezultat " .. result )
+
     return {
         result = result,
-        message = "temperatura w " .. room.name .. " jest " .. roomVal.temp .. " => jest " .. tempVal.name .. " => rezultar " .. result
+        message = "temperatura w " .. room.name .. " jest " .. roomVal.temp .. " => jest " .. tempVal.name .. " => rezultat " .. result
     }
 end
 
-function generateResult(tempVal, roomVal){
+function generateResult(tempVal, roomVal)
     if tempVal.temp >= (roomVal.temp - hist) then
         return Result.ON
     else if tempVal.temp >= (roomVal.temp + hist)  then
