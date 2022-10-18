@@ -17,14 +17,14 @@ local grandmanderVal = {
 
 local grandmander = { 
     name = "Pokoj Babci",
-    temp = 18,
+    temp = 18.0,
     items = 
     {
         {
             rangH = {        { start = 7, endd = 21 }   },
             rangD = {        { start = 1, endd = 7 }    },    
             name = "tryb dzien od pon-nie",
-            temp = 20
+            temp = 20.2
         }
     }
 }
@@ -37,21 +37,21 @@ local livingroomVal = {
 
 local livingroom = {
     name = "Salon",
-    temp = 18,
+    temp = 18.0,
     items = 
         {
             {    
                 rangH = {        { start = 6, endd = 8 },        { start = 13, endd = 21 }    },
                 rangD = {        { start = 1, endd = 5 }    },
                 name = "tryb dzien od pon-pt",
-                temp = 20
+                temp = 20.0
             }
             , 
             {
                 rangH = {        { start = 7, endd = 21 }   },
                 rangD = {        { start = 6, endd = 7 }    },
                 name = "tryb dzien od sob-nie",
-                temp = 20
+                temp = 20.0
             }
         }
 }
@@ -80,9 +80,11 @@ function openSwitch(room, roomVal)
 end
 
 function generateResult(tempVal, roomVal)
-    if tempVal.temp >= (roomVal.temp - hist) then
+    fibaro.debug(scena, tempVal.temp .. ">>>>>" .. " >= " .. (tempVal.temp - hist) .. " xx " .. roomVal.temp ..  " >= " ..  tempVal.temp + hist )
+
+    if roomVal.temp <= (tempVal.temp - hist) then
         return Result.ON
-    elseif tempVal.temp >= (roomVal.temp + hist)  then
+    elseif roomVal.temp <= (tempVal.temp + hist)  then
         return Result.KEEP
     else
         return Result.OFF
@@ -116,7 +118,8 @@ function getTempProces(item, room)
 end
 
 local resultLR = openSwitch(livingroom, livingroomVal)
-local resultGM = openSwitch(grandmander, grandmanderVal)
+-- local resultGM = openSwitch(grandmander, grandmanderVal)
+fibaro.debug(scena, resultLR.message )
 -- fibaro.debug(scena,"\n ".. resultLR.message .. " >>>>> " .. resultGM.message)
 
 -- if resultLR.result == Result.ON or resultGM.result == Result.ON  then
