@@ -19,7 +19,7 @@ local grandmanderVal = {
 
 local grandmander = { 
     name = "Pokoj Babci",
-    temp = 18
+    temp = 18,
     items = 
     {
         {
@@ -39,6 +39,7 @@ local livingroomVal = {
 
 local livingroom = {
     name = "Salon",
+    temp = 18,
     items = 
         {
             {    
