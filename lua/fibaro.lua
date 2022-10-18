@@ -1,13 +1,11 @@
 local hourOfTime = tonumber(os.date("%H")); dayOfWeek = tonumber(os.date("%w"))
 local device = {id1 = 114, id2 = 39, controlDeviceId = 150}; scena = "Scene196"
 local Result = {ON = "turnOn", OFF = "turnOff", KEEP = "keep"}
-
+local temp = {t1 = 18.0, t2 = 20.0, hist = 0.2}
 
 if(dayOfWeek == 0) then
    dayOfWeek = 7
 end
-
-local hist = 0.2
 
 local grandmanderVal = {
     temp = tonumber(fibaro.getValue(device.id1, "value")),
@@ -17,14 +15,14 @@ local grandmanderVal = {
 
 local grandmander = { 
     name = "Pokoj Babci",
-    temp = 18.0,
+    temp = temp.t1,
     items = 
     {
         {
             rangH = {        { start = 7, endd = 21 }   },
             rangD = {        { start = 1, endd = 7 }    },    
             name = "tryb dzien od pon-nie",
-            temp = 20.2
+            temp = temp.t2
         }
     }
 }
@@ -37,21 +35,21 @@ local livingroomVal = {
 
 local livingroom = {
     name = "Salon",
-    temp = 18.0,
+    temp = temp.t1,
     items = 
         {
             {    
                 rangH = {        { start = 6, endd = 8 },        { start = 13, endd = 21 }    },
                 rangD = {        { start = 1, endd = 5 }    },
                 name = "tryb dzien od pon-pt",
-                temp = 20.0
+                temp = temp.t2
             }
             , 
             {
                 rangH = {        { start = 7, endd = 21 }   },
                 rangD = {        { start = 6, endd = 7 }    },
                 name = "tryb dzien od sob-nie",
-                temp = 20.0
+                temp = temp.t2
             }
         }
 }
@@ -80,11 +78,11 @@ function openSwitch(room, roomVal)
 end
 
 function generateResult(tempVal, roomVal)
-    fibaro.debug(scena, tempVal.temp .. ">>>>>" .. " >= " .. (tempVal.temp - hist) .. " xx " .. roomVal.temp ..  " >= " ..  tempVal.temp + hist )
+    -- fibaro.debug(scena, tempVal.temp .. ">>>>>" .. " >= " .. (tempVal.temp - temp.hist) .. " xx " .. roomVal.temp ..  " >= " ..  tempVal.temp + temp.hist )
 
-    if roomVal.temp <= (tempVal.temp - hist) then
+    if roomVal.temp <= (tempVal.temp - temp.hist) then
         return Result.ON
-    elseif roomVal.temp <= (tempVal.temp + hist)  then
+    elseif roomVal.temp <= (tempVal.temp + temp.hist)  then
         return Result.KEEP
     else
         return Result.OFF
@@ -118,19 +116,18 @@ function getTempProces(item, room)
 end
 
 local resultLR = openSwitch(livingroom, livingroomVal)
--- local resultGM = openSwitch(grandmander, grandmanderVal)
-fibaro.debug(scena, resultLR.message )
--- fibaro.debug(scena,"\n ".. resultLR.message .. " >>>>> " .. resultGM.message)
+local resultGM = openSwitch(grandmander, grandmanderVal)
+fibaro.debug(scena, "<br>" .. resultLR.message .. "<br>" .. resultGM.message)
 
--- if resultLR.result == Result.ON or resultGM.result == Result.ON  then
---     fibaro.debug(scena,"turnOn")
---     -- fibaro.call(device.controlDeviceId, "turnOff")
--- elseif (resultLR.result == Result.OFF and resultGM.result == Result.OFF) then
---     fibaro.debug(scena,"turnOff")
---     -- fibaro.call(device.controlDeviceId, "turnOn")
--- else
---     fibaro.debug(scena,"STAN NIE USTALONY !!!!!!!!! ach ta histereza")
--- end
+if resultLR.result == Result.ON or resultGM.result == Result.ON  then
+    fibaro.debug(scena,"akcja na piecu turnOn")
+    -- fibaro.call(device.controlDeviceId, "turnOff")
+elseif (resultLR.result == Result.OFF and resultGM.result == Result.OFF) then
+    fibaro.debug(scena,"akcja na piecu  turnOff")
+    -- fibaro.call(device.controlDeviceId, "turnOn")
+else
+    fibaro.debug(scena,"STAN NIE USTALONY !!!!!!!!! ach ta histereza")
+end
 
 if(resultLR.result == Result.ON) then
   fibaro.debug(scena, "isLivingroom extra action on ON")
