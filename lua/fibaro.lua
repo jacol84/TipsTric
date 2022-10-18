@@ -1,17 +1,11 @@
 local hourOfTime = tonumber(os.date("%H")); dayOfWeek = tonumber(os.date("%w"))
 local device = {id1 = 114, id2 = 39, controlDeviceId = 150}; scena = "Scene196"
 local Result = {ON = "turnOn", OFF = "turnOff", KEEP = "keep"}
-local temp = {t1 = 18.0, t2 = 20.0, hist = 0.2}
+local temp = {t1 = 18, t2 = 20.0, hist = 0.2}
 
-if(dayOfWeek == 0) then
-   dayOfWeek = 7
-end
+if(dayOfWeek == 0) then  dayOfWeek = 7 end
 
-local grandmanderVal = {
-    temp = tonumber(fibaro.getValue(device.id1, "value")),
-    hourOfTime = hourOfTime,
-    dayOfWeek = dayOfWeek
-}
+local grandmanderVal = { temp = tonumber(fibaro.getValue(device.id1, "value")), hourOfTime = hourOfTime, dayOfWeek = dayOfWeek }
 
 local grandmander = { 
     name = "Pokoj Babci",
@@ -27,11 +21,7 @@ local grandmander = {
     }
 }
 
-local livingroomVal = {
-    temp = tonumber(fibaro.getValue(device.id2, "value")),
-    hourOfTime = hourOfTime,
-    dayOfWeek = dayOfWeek
-}
+local livingroomVal = { temp = tonumber(fibaro.getValue(device.id2, "value")),  hourOfTime = hourOfTime, dayOfWeek = dayOfWeek }
 
 local livingroom = {
     name = "Salon",
@@ -43,8 +33,7 @@ local livingroom = {
                 rangD = {        { start = 1, endd = 5 }    },
                 name = "tryb dzien od pon-pt",
                 temp = temp.t2
-            }
-            , 
+            }, 
             {
                 rangH = {        { start = 7, endd = 21 }   },
                 rangD = {        { start = 6, endd = 7 }    },
@@ -70,26 +59,17 @@ function openSwitch(room, roomVal)
     local item = itemsH[0]
     local tempVal = getTempProces(item, room)
     local result = generateResult(tempVal, roomVal)
-    -- fibaro.debug(scena, "temperatura w " .. room.name .. " jest " .. roomVal.temp .. " => jest " .. tempVal.name .. " => rezultat " .. result )
+    -- fibaro.debug(scena, "temperatura w " .. room.name .. " jest " .. roomVal.temp .. " max " .. tempVal.temp .." => jest " .. tempVal.name .. " => rezultat " .. result )
     return {
         result = result,
-        message = "temperatura w " .. room.name .. " jest " .. roomVal.temp .. " => jest " .. tempVal.name .. " => rezultat " .. result
+        message = "temperatura w " .. room.name .. " jest " .. roomVal.temp .. " max " .. tempVal.temp .." => jest " .. tempVal.name .. " => rezultat " .. result
     }
 end
 
 function generateResult(tempVal, roomVal)
     -- fibaro.debug(scena, tempVal.temp .. ">>>>>" .. " >= " .. (tempVal.temp - temp.hist) .. " xx " .. roomVal.temp ..  " >= " ..  tempVal.temp + temp.hist )
-
-    if roomVal.temp <= (tempVal.temp - temp.hist) then
-        return Result.ON
-    elseif roomVal.temp <= (tempVal.temp + temp.hist)  then
-        return Result.KEEP
-    else
-        return Result.OFF
-    end
+    if roomVal.temp <= (tempVal.temp - temp.hist) then return Result.ON elseif roomVal.temp <= (tempVal.temp + temp.hist)  then return Result.KEEP else return Result.OFF end
 end
-
-
 
 function selectItems(items, name, value, operator )
     local result = {}; i = 0
@@ -97,37 +77,31 @@ function selectItems(items, name, value, operator )
         for k,rangDay in pairs(item[name]) do 
             local isActive = operator(rangDay , value)
             -- fibaro.debug(scena, "selectItems " .. tostring(isActive) .. " " ..  item.name .. " " .. value .. " TO " .. rangDay.start )
-            if isActive then
-                -- fibaro.debug(scena, "selectItems " .. "dodane " .. item.name )
-                result[i] = item
-                i = i + 1
-            end
+            if isActive then result[i] = item;  i = i + 1 end
         end
     end
     return result
 end
 
 function getTempProces(item, room) 
-    if(item == nil ) then
-        return  {temp = room.temp, name = "tryb noc" }
-    else
-        return  {temp = item.temp, name = item.name }
-    end
+    if(item == nil ) then return  {temp = room.temp, name = "tryb noc" }  else return  {temp = item.temp, name = item.name } end
 end
 
 local resultLR = openSwitch(livingroom, livingroomVal)
 local resultGM = openSwitch(grandmander, grandmanderVal)
-fibaro.debug(scena, "<br>" .. resultLR.message .. "<br>" .. resultGM.message)
+local message = "<br>" .. resultLR.message .. "<br>" .. resultGM.message
 
 if resultLR.result == Result.ON or resultGM.result == Result.ON  then
-    fibaro.debug(scena,"akcja na piecu turnOn")
-    -- fibaro.call(device.controlDeviceId, "turnOff")
+    message  = "akcja na piecu turnOn" .. message 
+    -- fibaro.call(device.controlDeviceId, Result.ON)
 elseif (resultLR.result == Result.OFF and resultGM.result == Result.OFF) then
-    fibaro.debug(scena,"akcja na piecu  turnOff")
-    -- fibaro.call(device.controlDeviceId, "turnOn")
+    message  = "akcja na piecu turnOff" .. message 
+    -- fibaro.call(device.controlDeviceId, Result.OFF)
 else
-    fibaro.debug(scena,"STAN NIE USTALONY !!!!!!!!! ach ta histereza")
+    message  = "STAN NIEUSTALONY !!!!!!!!! ach ta histereza" .. message 
 end
+
+fibaro.debug(scena, message)
 
 if(resultLR.result == Result.ON) then
   fibaro.debug(scena, "isLivingroom extra action on ON")
