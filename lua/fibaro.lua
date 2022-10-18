@@ -71,11 +71,8 @@ function openSwitch(room, roomVal)
     local itemsH = selectItems(itemsD, "rangH", roomVal.hourOfTime, less)
     local item = itemsH[0]
     local tempVal = getTempProces(item, room)
-
     local result = generateResult(tempVal, roomVal)
-
-    fibaro.debug(scena, "temperatura w " .. room.name .. " jest " .. roomVal.temp .. " => jest " .. tempVal.name .. " => rezultat " .. result )
-
+    -- fibaro.debug(scena, "temperatura w " .. room.name .. " jest " .. roomVal.temp .. " => jest " .. tempVal.name .. " => rezultat " .. result )
     return {
         result = result,
         message = "temperatura w " .. room.name .. " jest " .. roomVal.temp .. " => jest " .. tempVal.name .. " => rezultat " .. result
@@ -120,17 +117,17 @@ end
 
 local resultLR = openSwitch(livingroom, livingroomVal)
 local resultGM = openSwitch(grandmander, grandmanderVal)
-fibaro.debug(scena,"\n ".. resultLR.message .. "\n" .. resultGM.message)
+-- fibaro.debug(scena,"\n ".. resultLR.message .. " >>>>> " .. resultGM.message)
 
-if resultLR.result == Result.ON or resultGM.result == Result.ON  then
-    fibaro.debug(scena,"turnOn")
-    -- fibaro.call(device.controlDeviceId, "turnOff")
-elseif (resultLR.result == Result.OFF and resultGM.result == Result.OFF) then
-    fibaro.debug(scena,"turnOff")
-    -- fibaro.call(device.controlDeviceId, "turnOn")
-else
-    fibaro.debug(scena,"STAN NIE USTALONY !!!!!!!!! ach ta histereza")
-end
+-- if resultLR.result == Result.ON or resultGM.result == Result.ON  then
+--     fibaro.debug(scena,"turnOn")
+--     -- fibaro.call(device.controlDeviceId, "turnOff")
+-- elseif (resultLR.result == Result.OFF and resultGM.result == Result.OFF) then
+--     fibaro.debug(scena,"turnOff")
+--     -- fibaro.call(device.controlDeviceId, "turnOn")
+-- else
+--     fibaro.debug(scena,"STAN NIE USTALONY !!!!!!!!! ach ta histereza")
+-- end
 
 if(resultLR.result == Result.ON) then
   fibaro.debug(scena, "isLivingroom extra action on ON")
