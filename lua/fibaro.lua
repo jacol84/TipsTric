@@ -1,7 +1,8 @@
+local controlDeviceId_2 = 151
 local hourOfTime = tonumber(os.date("%H")); dayOfWeek = tonumber(os.date("%w"))
 local device = {id1 = 114, id2 = 39, controlDeviceId = 150}; scena = "Scene196"
 local Result = {ON = "turnOn", OFF = "turnOff", KEEP = "keep"}
-local temp = {t1 = 18, t2 = 20.0, hist = 0.2}
+local temp = {t1 = 20.1, t2 = 19.0, hist = 0.2}
 
 if(dayOfWeek == 0) then  dayOfWeek = 7 end
 
@@ -62,7 +63,7 @@ function openSwitch(room, roomVal)
     -- fibaro.debug(scena, "temperatura w " .. room.name .. " jest " .. roomVal.temp .. " max " .. tempVal.temp .." => jest " .. tempVal.name .. " => rezultat " .. result )
     return {
         result = result,
-        message = "temperatura w " .. room.name .. " jest " .. roomVal.temp .. " max " .. tempVal.temp .." => jest " .. tempVal.name .. " => rezultat " .. result
+        message = "temperatura w " .. room.name .. " jest " .. roomVal.temp .. " min " .. tempVal.temp .." => jest " .. tempVal.name .. " => rezultat " .. result
     }
 end
 
@@ -93,18 +94,20 @@ local message = "<br>" .. resultLR.message .. "<br>" .. resultGM.message
 
 if resultLR.result == Result.ON or resultGM.result == Result.ON  then
     message  = "akcja na piecu turnOn" .. message 
-    -- fibaro.call(device.controlDeviceId, Result.ON)
+    fibaro.call(device.controlDeviceId, Result.ON)
 elseif (resultLR.result == Result.OFF and resultGM.result == Result.OFF) then
     message  = "akcja na piecu turnOff" .. message 
-    -- fibaro.call(device.controlDeviceId, Result.OFF)
+    fibaro.call(device.controlDeviceId, Result.OFF)
 else
-    message  = "STAN NIEUSTALONY !!!!!!!!! ach ta histereza" .. message 
+    message  = "STAN NIEUSTALONY !!!!!!!!! ach ta histereza obecnie" .. fibaro.getValue(device.controlDeviceId, "value") .. message 
 end
 
 fibaro.debug(scena, message)
 
-if(resultLR.result == Result.ON) then
-  fibaro.debug(scena, "isLivingroom extra action on ON")
-elseif (resultLR.result == Result.OFF) then
-    fibaro.debug(scena, "isLivingroom extra action on OFF")
+if( resultLR.result == Result.KEEP) then
+    fibaro.debug(scena, "isLivingroom no action " .. resultLR.result)
+else
+    fibaro.debug("Scene196", resultLR.result .. " dla 151")
+    fibaro.call(controlDeviceId_2, resultLR.result)
 end
+
