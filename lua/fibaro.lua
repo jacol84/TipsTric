@@ -1,28 +1,27 @@
-local controlDeviceId_2 = 151
 local hourOfTime = tonumber(os.date("%H")); dayOfWeek = tonumber(os.date("%w"))
-local device = {id1 = 114, id2 = 39, controlDeviceId = 150}; scena = "Scene196"
+local device = {id1 = 114, id2 = 39, id3 = 170, id5 =  42,controlDeviceId = 167 , controlDeviceId2 =166}; scena = "Scene209"
 local Result = {ON = "turnOn", OFF = "turnOff", KEEP = "keep"}
-local temp = {t1 = 20.1, t2 = 19.0, hist = 0.2}
+local temp = {t1 = 18, t2 = 20, t3 = 18, t4 = 20, hist = 0.2}
 
 if(dayOfWeek == 0) then  dayOfWeek = 7 end
 
-local grandmanderVal = { temp = tonumber(fibaro.getValue(device.id1, "value")), hourOfTime = hourOfTime, dayOfWeek = dayOfWeek }
+local grandmanderVal = { temp = tonumber((fibaro.getValue(device.id1, "value") + fibaro.getValue(device.id3, "value"))/2), hourOfTime = hourOfTime, dayOfWeek = dayOfWeek }
 
 local grandmander = { 
     name = "Pokoj Babci",
-    temp = temp.t1,
+    temp = temp.t3,
     items = 
     {
         {
-            rangH = {        { start = 7, endd = 21 }   },
+            rangH = {        { start = 7, endd = 22 }   },
             rangD = {        { start = 1, endd = 7 }    },    
             name = "tryb dzien od pon-nie",
-            temp = temp.t2
+            temp = temp.t4
         }
     }
 }
 
-local livingroomVal = { temp = tonumber(fibaro.getValue(device.id2, "value")),  hourOfTime = hourOfTime, dayOfWeek = dayOfWeek }
+local livingroomVal = { temp = tonumber((fibaro.getValue(device.id2, "value") + fibaro.getValue(device.id5, "value"))/2) ,  hourOfTime = hourOfTime, dayOfWeek = dayOfWeek }
 
 local livingroom = {
     name = "Salon",
@@ -30,13 +29,13 @@ local livingroom = {
     items = 
         {
             {    
-                rangH = {        { start = 6, endd = 8 },        { start = 13, endd = 21 }    },
+                rangH = {        { start = 5, endd = 7 },        { start = 15, endd = 22 }    },
                 rangD = {        { start = 1, endd = 5 }    },
                 name = "tryb dzien od pon-pt",
                 temp = temp.t2
             }, 
             {
-                rangH = {        { start = 7, endd = 21 }   },
+                rangH = {        { start = 8, endd = 22 }   },
                 rangD = {        { start = 6, endd = 7 }    },
                 name = "tryb dzien od sob-nie",
                 temp = temp.t2
@@ -99,7 +98,7 @@ elseif (resultLR.result == Result.OFF and resultGM.result == Result.OFF) then
     message  = "akcja na piecu turnOff" .. message 
     fibaro.call(device.controlDeviceId, Result.OFF)
 else
-    message  = "STAN NIEUSTALONY !!!!!!!!! ach ta histereza obecnie" .. fibaro.getValue(device.controlDeviceId, "value") .. message 
+    message  = "STAN NIEUSTALONY !!!!!!!!! ach ta histereza => obecnie jest " .. tostring(fibaro.getValue(device.controlDeviceId, "value")) .. message 
 end
 
 fibaro.debug(scena, message)
@@ -107,7 +106,8 @@ fibaro.debug(scena, message)
 if( resultLR.result == Result.KEEP) then
     fibaro.debug(scena, "isLivingroom no action " .. resultLR.result)
 else
-    fibaro.debug("Scene196", resultLR.result .. " dla 151")
-    fibaro.call(controlDeviceId_2, resultLR.result)
+    fibaro.debug(scena, resultLR.result .. " dla 151")
+    fibaro.call(device.controlDeviceId2, resultLR.result)
 end
+
 
