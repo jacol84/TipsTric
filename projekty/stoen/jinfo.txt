@@ -1,0 +1,3 @@
+scadaUser: 292 → Dariusz Kwasik. Dyspozytor. su_rx10358
+scadaUser: 4420 → Jarema Kin. Planista. su_rx11909
+scadaUser: 274 → Bartłomiej Wójcik. Dyspozytor. su_rx14822
