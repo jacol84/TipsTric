@@ -1,0 +1,2 @@
+PS C:\Windows\System32> cd D:\praca\prgqt\mpls_stoen\
+PS C:\Windows\System32> java -jar .\powerload-app-1.11.1.418295.jar
