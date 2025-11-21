@@ -48,7 +48,7 @@ Lib\site-packages
 
 ![alt text](image-2.png)
 
-### gdy wystąpi błąd 
+### gdy wystąpi błąd  pywin32
 ```
 błąd
 ~ play! 1.7.1, https://www.playframework.com  
