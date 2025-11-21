@@ -1,9 +1,12 @@
 # INSRALLACJA PYTHONA
 
-### stwórz folder DIR_PYTHON
+### stwórz folder NEW_DIR_PYTHON
 np
 ``` BASH
-mkdir D:\praca\python\python-3.13.9
+$Env:NEW_DIR_PYTHON = "D:\praca\python\python-3.13.9"
+``` 
+``` BASH
+mkdir $Env:NEW_DIR_PYTHON
 ``` 
 
 ### pobrać pythona
@@ -23,7 +26,9 @@ pobranie pliku https://bootstrap.pypa.io/get-pip.py
 wejdź do przeglądarki i zapisz w folderze DIR_PYTHON get-pip.py 
 
 ``` BASH
-cd D:\praca\python\python-3.13.9
+cd $Env:NEW_DIR_PYTHON
+``` 
+``` BASH
 python get-pip.py
 ``` 
 
@@ -42,6 +47,14 @@ ModuleNotFoundError: No module named 'pip'
 w pliku sprawdzić  python313._pth czy jest 
 należy dodać 
 
+``` BASH
+ls $Env:NEW_DIR_PYTHON -Filter='python*._pth' | cat
+``` 
+
+``` BASH
+ls $Env:NEW_DIR_PYTHON -Filter='python*._pth' 
+``` 
+i trzeba dopisać 
 ``` BASH
 Lib\site-packages
 ``` 
