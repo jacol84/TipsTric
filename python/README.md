@@ -28,6 +28,11 @@ wejdź do przeglądarki i zapisz w folderze DIR_PYTHON get-pip.py
 ``` BASH
 cd $Env:NEW_DIR_PYTHON
 ``` 
+
+``` BASH
+iwr -Uri "https://bootstrap.pypa.io/get-pip.py"  -OutFile get-pip.py
+``` 
+
 ``` BASH
 python get-pip.py
 ``` 
