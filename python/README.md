@@ -28,6 +28,15 @@ python get-pip.py
 ``` 
 
 ### gdy wyskoczy błąd po wpisaniu pip.exe
+```
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\praca\python\python3\Scripts\pip.exe\__main__.py", line 2, in <module>
+    from pip._internal.cli.main import main
+ModuleNotFoundError: No module named 'pip'
+```
+
 ![alt text](image-1.png)
 
 w pliku sprawdzić  python313._pth czy jest 
