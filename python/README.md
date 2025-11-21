@@ -11,9 +11,11 @@ mkdir D:\praca\python\python-3.13.9
 wybrać -> https://www.python.org/downloads/windows/
 
 wybrać -> https://www.python.org/ftp/python/3.13.9/python-3.13.9-embed-amd64.zip
+pobrać i rozpakować w folderze DIR_PYTHON
+
 ![alt text](image.png)
 
-### pobranie PIP 
+### instalacja PIP 
 
 https://bootstrap.pypa.io tu jest opis co i jak zrobić
 
