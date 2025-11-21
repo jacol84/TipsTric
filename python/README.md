@@ -48,11 +48,11 @@ w pliku sprawdzić  python313._pth czy jest
 należy dodać 
 
 ``` BASH
-ls $Env:NEW_DIR_PYTHON -Filter='python*._pth' | cat
+ls $Env:NEW_DIR_PYTHON -Filter 'python*._pth' | cat
 ``` 
 
 ``` BASH
-ls $Env:NEW_DIR_PYTHON -Filter='python*._pth' 
+ls $Env:NEW_DIR_PYTHON -Filter 'python*._pth' 
 ``` 
 i trzeba dopisać 
 ``` BASH
